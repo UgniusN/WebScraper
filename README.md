@@ -10,3 +10,4 @@ Features:
 * Scrape only sentences with your selected keyword
 * Export all scraped urls
 * Export all scraped sentences
+![DEMO](/TRY.png)
