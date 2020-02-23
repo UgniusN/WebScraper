@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebScraperAPP.classes
 {
-    class UrlRepository : Repository
+    public class UrlRepository : Repository
     {
         private List<String> urlList;
         public UrlRepository()
@@ -26,6 +26,11 @@ namespace WebScraperAPP.classes
         public List<string> retrieve()
         {
             return urlList;
+        }
+        public void removeDubs()
+        {
+            List<String> urlListDubs = urlList;
+            urlList = urlListDubs.Distinct().ToList();
         }
     }
 }

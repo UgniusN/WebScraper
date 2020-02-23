@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\SentenceRepository.cs" />
+    <Compile Include="classes\KeywordScrapper.cs" />
     <Compile Include="classes\Repository.cs" />
     <Compile Include="classes\UrlRepository.cs" />
     <Compile Include="classes\HtmlDownloader.cs" />

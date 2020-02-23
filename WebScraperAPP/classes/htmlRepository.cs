@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebScraperAPP.classes
 {
-    class HtmlRepository: Repository
+    public class HtmlRepository: Repository
     {
         private List<String> htmlList;
         public HtmlRepository()

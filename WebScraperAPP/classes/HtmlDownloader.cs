@@ -14,17 +14,21 @@ namespace WebScraperAPP.classes
     {
         private HtmlRepository htmlRepository;
         private UrlRepository urlRepository;
-        public HtmlDownloader()
+
+        public HtmlDownloader(HtmlRepository htmlRepository, UrlRepository urlRepository)
         {
-            htmlRepository = new HtmlRepository();
-            urlRepository = new UrlRepository();
+            this.htmlRepository = htmlRepository;
+            this.urlRepository = urlRepository;
         }
+
+
         public void downloadSourceOfUrl(String Url)
         {
-            HtmlWeb web = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            HtmlWeb web = new HtmlWeb();
             doc = web.Load(Url);
-            htmlRepository.addItem(doc.DocumentNode.OuterHtml);
+            String htmlkodas = doc.DocumentNode.InnerText;
+            htmlRepository.addItem(htmlkodas);
             foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//a[@href]"))
             {
                 HtmlAttribute att = link.Attributes["href"];
