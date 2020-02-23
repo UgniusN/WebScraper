@@ -17,6 +17,7 @@ namespace WebScraperAPP.classes
         public void addItem(string item)
         {
             urlList.Add(item);
+            removeDubs();
         }
 
         public String getFirstItem()

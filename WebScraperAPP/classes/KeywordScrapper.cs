@@ -21,14 +21,22 @@ namespace WebScraperAPP.classes
 
         public void scrapeSentence(String keyword)
         {
-            String htmlkodas = htmlRepository.getFirstItem();
-            htmlkodas = Regex.Replace(htmlkodas, @"\s+|&nbsp;", " ");
-            string[] sentences = Regex.Split(htmlkodas, @"(?<=[\.!\?])\s+");
-
-            foreach (string item in sentences)
+            foreach (string kodas in htmlRepository.retrieve())
             {
-                    sentenceRepository.addItem(item);
+                String htmlkodas = kodas;
+                htmlkodas = Regex.Replace(htmlkodas, @"\s+|&nbsp;|&#8230;|&#039;|&#8217|&#8211;|&middot;", " ");
+                string[] sentences = Regex.Split(htmlkodas, @"(?<=[\.!\?])\s+");
+
+                foreach (string item in sentences)
+                {
+                    String itemHolder = item.ToLower();
+                    if (itemHolder.Contains(keyword.ToLower()))
+                    {
+                        sentenceRepository.addItem(item);
+                    }
+                }
             }
+            sentenceRepository.removeDubs();
         }
 
         public List<String> retrieveHtml()
